@@ -46,6 +46,6 @@ class Api::V1::RentalsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def api_v1_rental_params
-      params.fetch(:api_v1_rental, {})
+      params.require(:api_v1_rental).permit(:status)
     end
 end

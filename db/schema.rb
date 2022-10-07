@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_10_07_132335) do
+ActiveRecord::Schema[7.0].define(version: 2022_10_07_133427) do
   create_table "api_v1_accommodations", force: :cascade do |t|
     t.text "description"
     t.datetime "created_at", null: false
@@ -25,6 +25,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_07_132335) do
   create_table "api_v1_rentals", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "status", default: 0
   end
 
   create_table "jwt_denylist", force: :cascade do |t|
