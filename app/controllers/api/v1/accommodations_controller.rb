@@ -47,6 +47,8 @@ class Api::V1::AccommodationsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def api_v1_accommodation_params
-      params.require(:api_v1_accommodation).permit(:description, :type_of_hotel)
+      params.require(:api_v1_accommodation).permit(:description, :type_of_hotel,
+                                                  :country, :city, :street,
+                                                  :phone_number)
     end
 end

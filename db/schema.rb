@@ -10,12 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_10_07_130556) do
+ActiveRecord::Schema[7.0].define(version: 2022_10_07_132335) do
   create_table "api_v1_accommodations", force: :cascade do |t|
     t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "type_of_hotel"
+    t.string "country"
+    t.string "city"
+    t.string "street"
+    t.string "phone_number"
   end
 
   create_table "api_v1_rentals", force: :cascade do |t|
