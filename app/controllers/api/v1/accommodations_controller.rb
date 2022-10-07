@@ -6,7 +6,7 @@ class Api::V1::AccommodationsController < ApplicationController
   def index
     @api_v1_accommodations = Api::V1::Accommodation.all
 
-    render json: @api_v1_accommodations
+    paginate json: @api_v1_accommodations
   end
 
   # GET /api/v1/accommodations/1
