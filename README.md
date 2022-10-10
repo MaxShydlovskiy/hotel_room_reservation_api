@@ -1,24 +1,32 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+For CamelCase - "keys".camelize 
+Or:
 
-Things you may want to cover:
+"keys".split('_').collect(&:capitalize).join
 
-* Ruby version
+For snake_case:
 
-* System dependencies
+def snake_case
+  return downcase if match(/\A[A-Z]+\z/)
+  gsub(/([A-Z]+)([A-Z][a-z])/, '\1_\2').
+  gsub(/([a-z])([A-Z])/, '\1_\2').
+  downcase
+end
 
-* Configuration
+"YoursKeys".snake_case  #=> "yours_keys"
 
-* Database creation
+Or just use Rail's ActiveSupport:
 
-* Database initialization
+class String
+  def underscore
+    self.gsub(/::/, '/').
+    gsub(/([A-Z]+)([A-Z][a-z])/,'\1_\2').
+    gsub(/([a-z\d])([A-Z])/,'\1_\2').
+    tr("-", "_").
+    downcase
+  end
+end
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+"BlaBlaBla".underscore
+=> "bla_bla_bla"
