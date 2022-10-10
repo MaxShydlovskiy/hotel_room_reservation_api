@@ -46,6 +46,6 @@ class Api::V1::RentalsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def api_v1_rental_params
-      params.require(:api_v1_rental).permit(:status, user_id, accommodation_id)
+      params.require(:api_v1_rental).permit(:status, :datetime, user_id, accommodation_id)
     end
 end
