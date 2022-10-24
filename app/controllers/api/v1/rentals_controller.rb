@@ -4,6 +4,9 @@ class Api::V1::RentalsController < ApplicationController
   # GET /api/v1/rentals
   def index
     @api_v1_rentals = Api::V1::Rental.all
+    @api_v1_rentals = @api_v1_rentals.filter_by_status(params[:status]) if params[:status].present?
+    @api_v1_rentals = @api_v1_rentals.filter_by_accommodation(params[:accommodation_id]) if params[:accommodation_id].present?
+    @api_v1_rentals = @api_v1_rentals.filter_by_datetime(params[:datetime]) if params[:datetime].present?
 
     render json: @api_v1_rentals
   end

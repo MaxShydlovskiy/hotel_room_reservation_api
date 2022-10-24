@@ -11,4 +11,10 @@ class Api::V1::Rental < ApplicationRecord
       return true
     end
   end
+
+  default_scope { order("updated_at DESC") }
+  scope :filter_by_status, -> (status) { where status: ['free', 'reserved', 'archived']}
+  scope :filter_by_accommodation, -> (accommodation_id) { where accommodation_id: accommodation_id}
+
+  scope :filter_by_datetime, -> (datetime) { where("DATE(datetime) = ?", daytime.to_date)}
 end
