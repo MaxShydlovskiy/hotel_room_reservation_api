@@ -2,21 +2,21 @@ module API
   module V1
     class Accommodations < Grape::API
       helpers AccommodationsHelper
-      helpers PaginationHelpers
+      # helpers PaginationHelper
 
       resource :accommodations do
         # GET /api/v1/accommodations
         desc 'Return all accommodations'
         params do
-          use :filter_query, :pagination
+          use :filter_query #:pagination
         end
         get '' do
           scope = API::V1::Accommodation.all
           scope = apply_filters(scope)
-          scope, meta = apply_pagination(scope)
+          # scope, meta = apply_pagination(scope)
 
           {
-            **ActiveModelSerializers::SerializableResource.new(scope).as_json(root: 'accommodations'),
+            **ActiveModelSerializers::SerializableResource.new(scope).as_json,
             **meta
           }
         end

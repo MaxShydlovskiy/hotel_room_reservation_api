@@ -8,10 +8,11 @@ module AccommodationsHelper
              values: %w[hotel hostel apparthotel],
              coerce_with: ->(value) { value.is_a?(Array) ? value : [value] },
              desc: "Options: hotel, hostel, apparthotel"
+    # Any other filters
   end
 
   def apply_filters(scope)
-    # ... any logic
+    # ... filter logic
     scope
   end
 end
