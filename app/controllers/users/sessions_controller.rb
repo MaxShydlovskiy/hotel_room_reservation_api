@@ -4,7 +4,14 @@ class Users::SessionsController < Devise::SessionsController
   private
 
   def respond_with(resource, _opts = {})
-    render json: { message: 'Logged.' }, status: :ok
+    response_obj = {
+      user: UserSerializer.new(resource).serializable_hash,
+      authorization: {
+        token: request.env['warden-jwt_auth.token']
+      }
+    }
+
+    render json: CaseTransform.camel_lower(response_obj)
   end
 
   def respond_to_on_destroy

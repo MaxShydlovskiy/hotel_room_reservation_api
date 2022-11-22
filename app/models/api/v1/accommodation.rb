@@ -1,4 +1,4 @@
-class Api::V1::Accommodation < ApplicationRecord
+class API::V1::Accommodation < ApplicationRecord
   enum type_of_hotel: [:hotel, :hostel, :apparthotel]
 
   has_many :rentals

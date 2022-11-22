@@ -1,6 +1,6 @@
 require "test_helper"
 
-class Api::V1::AccommodationsControllerTest < ActionDispatch::IntegrationTest
+class API::V1::AccommodationsControllerTest < ActionDispatch::IntegrationTest
   setup do
     @api_v1_accommodation = api_v1_accommodations(:one)
   end
