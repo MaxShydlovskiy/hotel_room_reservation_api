@@ -1,7 +1,38 @@
 module API
   module V1
     class Rentals < Grape::API
+
+      # GET /api/v1/rentals
       resource :rentals do
+        desc 'Return all rentals'
+        get '' do
+          @api_v1_rentals = Api::V1::Rental.all
+          @api_v1_rentals = @api_v1_rentals.filter_by_status(params[:status]) if params[:status].present?
+          @api_v1_rentals = @api_v1_rentals.filter_by_accommodation(params[:accommodation_id]) if params[:accommodation_id].present?
+          @api_v1_rentals = @api_v1_rentals.filter_by_datetime(params[:datetime]) if params[:datetime].present?
+        end
+      end
+
+      # GET /api/v1/rentals/1
+        desc 'Return rental'
+        params do
+          requires :id, type: Integer, desc: 'ID of rental'
+        end
+        get ':id' do
+          @api_v1_rental = API::V1::Rental.find(params[:id])
+        end
+
+        # POST /api/v1/rentals
+        desc 'Creates accommodation'
+        params do
+          requires :status, type: Integer, values: %w[free, reserved, archived],  desc: 'Type of rentals status'
+          requires :dateTime,     type: DateTime, desc: 'Date Time'
+          requires :accommodationId,        type: Integer, desc: 'Accommodation Id'
+          requires :userId,      type: String, desc: 'User Id'
+        end
+        post '' do
+          API::V1::Rental.create(permitted_params)
+        end
 
         # before_action :set_api_v1_rental, only: %i[ show update destroy ]
         #

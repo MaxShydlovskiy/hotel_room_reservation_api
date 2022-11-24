@@ -9,6 +9,7 @@ module API
       end
 
       mount API::V1::Accommodations
+      mount API::V1::Rentals
     end
   end
 end
