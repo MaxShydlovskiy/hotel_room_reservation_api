@@ -6,19 +6,20 @@ module API
 
       resource :accommodations do
         # GET /api/v1/accommodations
-        desc 'Return all accommodations'
+        desc 'Return all accommodations, paginated'
         params do
           use :filter_query #:pagination
         end
         get '' do
-          scope = API::V1::Accommodation.all
-          scope = apply_filters(scope)
+          @accommodations = paginate API::V1::Accommodation.all
+          # scope =  paginate API::V1::Accommodation.all
+          # scope = apply_filters(scope)
           # scope, meta = apply_pagination(scope)
 
-          {
-            **ActiveModelSerializers::SerializableResource.new(scope).as_json,
-            **meta
-          }
+          # {
+            # **ActiveModelSerializers::SerializableResource.new(scope).as_json,
+            # **meta
+          # }
         end
 
         # GET /api/v1/accommodations/1
@@ -27,7 +28,8 @@ module API
           requires :id, type: Integer, desc: 'ID of accommodation'
         end
         get ':id' do
-          API::V1::Accommodation.find(params[:id])
+          # paginate per_page: 10, max_per_page: 200
+          @accommodation = API::V1::Accommodation.find(params[:id])
         end
 
         # POST /api/v1/accommodations
