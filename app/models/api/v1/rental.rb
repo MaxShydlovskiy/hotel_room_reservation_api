@@ -2,7 +2,7 @@ class API::V1::Rental < ApplicationRecord
   enum status: [:free, :reserved, :archived]
   belongs_to :user
   belongs_to :accommodation, foreign_key: :api_v1_accommodation_id
-  before_create :check_date_uniqueness
+  # before_create :check_date_uniqueness
 
   def check_date_uniqueness
     if API::V1::Rental.where(:datetime => self.datetime.to_date.beginning_of_day..self.datetime.to_date.end_of_day).exists?
