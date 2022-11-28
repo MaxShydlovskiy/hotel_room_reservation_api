@@ -14,25 +14,25 @@ module API
       end
 
       # GET /api/v1/rentals/1
-        desc 'Return rental'
-        params do
-          requires :id, type: Integer, desc: 'ID of rental'
-        end
-        get ':id' do
-          @api_v1_rental = API::V1::Rental.find(params[:id])
-        end
+      desc 'Return rental'
+      params do
+        requires :id, type: Integer, desc: 'ID of rental'
+      end
+      get ':id' do
+        @api_v1_rental = API::V1::Rental.find(params[:id])
+      end
 
-        # POST /api/v1/rentals
-        desc 'Creates accommodation'
-        params do
-          requires :status, type: Integer, values: %w[free, reserved, archived],  desc: 'Type of rentals status'
-          requires :dateTime,     type: DateTime, desc: 'Date Time'
-          requires :accommodationId,        type: Integer, desc: 'Accommodation Id'
-          requires :userId,      type: String, desc: 'User Id'
-        end
-        post '' do
-          API::V1::Rental.create(permitted_params)
-        end
+      # POST /api/v1/rentals
+      desc 'Creates rental'
+      params do
+        requires :status, type: String, values: %w[free, reserved, archived],  desc: 'Type of rentals status'
+        requires :date,     type: DateTime, desc: 'Date'
+        requires :accommodationId,        type: Integer, desc: 'Accommodation Id'
+        requires :userId,      type: String, desc: 'User Id'
+      end
+      post '' do
+        API::V1::Rental.create(permitted_params)
+      end
 
         # before_action :set_api_v1_rental, only: %i[ show update destroy ]
         #
@@ -86,7 +86,6 @@ module API
         #   def api_v1_rental_params
         #     params.require(:api_v1_rental).permit(:status, :datetime, user_id, accommodation_id)
         #   end
-      end
     end
   end
 end
