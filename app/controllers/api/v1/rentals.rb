@@ -26,7 +26,7 @@ module API
       desc 'Creates rental'
       params do
         requires :status, type: String, values: %w[free, reserved, archived],  desc: 'Type of rentals status'
-        requires :reserveDate,     type: Date, desc: 'Reserve Date'
+        requires :reserveDay,     type: Date, desc: 'Reserve Day'
         requires :accommodationId,        type: Integer, desc: 'Accommodation Id'
         requires :userId,      type: String, desc: 'User Id'
       end
