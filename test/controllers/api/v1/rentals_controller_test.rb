@@ -1,6 +1,6 @@
 require "test_helper"
 
-class Api::V1::RentalsControllerTest < ActionDispatch::IntegrationTest
+class API::V1::RentalsControllerTest < ActionDispatch::IntegrationTest
   setup do
     @api_v1_rental = api_v1_rentals(:one)
   end
