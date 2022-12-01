@@ -10,25 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_11_29_022534) do
+ActiveRecord::Schema[7.0].define(version: 2022_12_01_005448) do
   create_table "api_v1_accommodations", force: :cascade do |t|
-    t.text "description"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
     t.integer "type_of_hotel"
     t.string "country"
     t.string "city"
-    t.string "street"
     t.string "phone_number"
+    t.string "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "api_v1_rentals", force: :cascade do |t|
+    t.integer "status"
+    t.date "reserve_day"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "status", default: 0
-    t.integer "user_id", null: false
     t.integer "api_v1_accommodation_id", null: false
-    t.date "reserve_day"
+    t.integer "user_id", null: false
     t.index ["api_v1_accommodation_id"], name: "index_api_v1_rentals_on_api_v1_accommodation_id"
     t.index ["user_id"], name: "index_api_v1_rentals_on_user_id"
   end
@@ -37,12 +36,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_29_022534) do
     t.string "jti", null: false
     t.datetime "exp", null: false
     t.index ["jti"], name: "index_jwt_denylist_on_jti"
-  end
-
-  create_table "roles", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
