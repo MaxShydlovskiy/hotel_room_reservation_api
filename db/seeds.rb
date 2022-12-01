@@ -41,3 +41,15 @@ until us == 101 do
     )
   us += 1
 end
+
+stat = [:free, :reserved, :archived]
+rent = 1
+until rent == 101
+  API::V1::Rental.create(
+    status: stat.shuffle.first,
+    user_id: rand(1..4),
+    api_v1_accommodation_id: rand(1..100),
+    reserve_day: rand((Date.today - 3.month)..Date.today)
+  )
+  rent += 1
+end
