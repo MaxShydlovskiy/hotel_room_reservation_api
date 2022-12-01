@@ -15,6 +15,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_01_005448) do
     t.integer "type_of_hotel"
     t.string "country"
     t.string "city"
+    t.string "street"
     t.string "phone_number"
     t.string "description"
     t.datetime "created_at", null: false

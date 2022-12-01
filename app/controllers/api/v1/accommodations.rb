@@ -38,7 +38,7 @@ module API
           requires :typeOfHotel, type: String, values: %w[hotel hostel apparthotel],  desc: 'Type of accommodation'
           requires :country,     type: String, desc: 'Country'
           requires :city,        type: String, desc: 'City'
-          requires :street,      type: String, desc: 'City'
+          requires :street,      type: String, desc: 'Street'
           requires :phoneNumber, type: String, desc: 'Phone number'
           optional :description, type: String, desc: 'Description'
         end
