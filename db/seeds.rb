@@ -6,10 +6,10 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 
-u1 = User.create({ email: 'test@test.com', password: '12345', password_confirmation: '12345' })
-u2 = User.create({ email: 'test1@test.com', password: '123456', password_confirmation: '123456' })
-u3 = User.create({ email: 'test2@test.com', password: '1234567', password_confirmation: '1234567' })
-u4 = User.create({ email: 'test3@test.com', password: '12345678', password_confirmation: '12345678' })
+u1 = User.find_or_create_by(email: 'test@test.com')
+u2 = User.find_or_create_by(email: 'test1@test.com')
+u3 = User.find_or_create_by(email: 'test2@test.com')
+u4 = User.find_or_create_by(email: 'test3@test.com')
 
 type = [:hotel, :apparthotel, :hostel]
 town_uk = [:London, :Liverpool, :Cardiff, :Manchester, :Glasgow]

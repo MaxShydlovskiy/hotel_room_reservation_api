@@ -6,7 +6,7 @@ class User < ApplicationRecord
 
   validates_presence_of :password, :email
   validates_length_of :password, minimum: 4, on: :create
-  has_many :rentals
+  has_many :api_v1_rentals
 
   def admin?
     role == 'admin'
