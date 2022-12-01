@@ -15,7 +15,7 @@ type = [:hotel, :apparthotel, :hostel]
 town_uk = [:London, :Liverpool, :Cardiff, :Manchester, :Glasgow]
 
 uk = 1
-until uk == 51 do
+until uk == 101 do
   API::V1::Accommodation.create(
     type_of_hotel: type.shuffle.first,
     country: 'United Kingdom',
@@ -30,7 +30,7 @@ end
 
 town_usa = [:LA, :Washington, :New_York, :Chicago, :San_Francisco, :Seattle]
 us = 1
-until us == 51 do
+until us == 101 do
   API::V1::Accommodation.create(
     type_of_hotel: type.shuffle.first,
     country: 'USA',
