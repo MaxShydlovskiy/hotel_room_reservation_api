@@ -14,7 +14,7 @@ module API
           @accommodations = paginate API::V1::Accommodation.all
           # scope =  paginate API::V1::Accommodation.all
           # scope = apply_filters(scope)
-          # scope, meta = apply_pagination(scope)
+          # scope, meta = apply_pagination(scope) for filtering with helper filter
 
           # {
             # **ActiveModelSerializers::SerializableResource.new(scope).as_json,
