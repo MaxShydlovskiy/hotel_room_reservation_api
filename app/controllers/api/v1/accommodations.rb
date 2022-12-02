@@ -11,15 +11,15 @@ module API
           use :filter_query #:pagination
         end
         get '' do
-          @accommodations = paginate API::V1::Accommodation.all
-          # scope =  paginate API::V1::Accommodation.all
-          # scope = apply_filters(scope)
+          # @accommodations = paginate API::V1::Accommodation.all
+          scope =  paginate API::V1::Accommodation.all
+          scope = apply_filters(scope)
           # scope, meta = apply_pagination(scope) for filtering with helper filter
 
-          # {
-            # **ActiveModelSerializers::SerializableResource.new(scope).as_json,
+          {
+            **ActiveModelSerializers::SerializableResource.new(scope).as_json,
             # **meta
-          # }
+          }
         end
 
         # GET /api/v1/accommodations/1
