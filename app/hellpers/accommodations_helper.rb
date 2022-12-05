@@ -14,8 +14,7 @@ module AccommodationsHelper
   def apply_filters(scope)
     # ... filter logic
     scope = API::V1::Rental.joins(:api_v1_accommodation).where('api_v1_rentals.api_v1_accommodation_id like ?')
-                                                        .where('reserve_day like ?', "'#{}'")
+                                                        .where(reserve_day: ('Date like ?')..'Date like ?')
                                                         .where(status: [:free, :reserved, :archived])
-                                                        .where('country LIKE ? OR city LIKE ? OR street LIKE ?')
   end
 end
