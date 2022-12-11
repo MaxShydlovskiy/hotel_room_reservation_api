@@ -11,10 +11,8 @@ module API
           use :filter_query #:pagination
         end
         get '' do
-          @pagy, @api_v1_accommodation = pagy(API::V1::Accommodation.all)
+          scope = API::V1::Accommodation.page(params[:page])
           # scope = apply_filters(scope)
-          pagy_headers_merge(pagy)
-          render json: api_v1_accommodation
           # {
             # **ActiveModelSerializers::SerializableResource.new(scope).as_json
             # **paginate
