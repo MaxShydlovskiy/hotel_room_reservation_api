@@ -23,8 +23,8 @@ gem 'devise'
 gem 'devise-jwt'
 gem 'dotenv-rails', groups: [:development, :test]
 gem "cancan"
-# gem 'pagy'
-gem 'kaminari'
+gem 'pagy'
+
 
 gem "case_transform", "~> 0.2"
 gem "grape", "~> 1.6"
