@@ -2,7 +2,9 @@ module API
   module V1
     class Accommodations < Grape::API
       helpers AccommodationsHelper
-      # helpers PaginationHelper
+      include API::V1::Defaults
+      # include Grape::Kaminari
+      helpers PaginationsHelper
       # include Pagy::Backend
 
       resource :accommodations do
@@ -12,7 +14,12 @@ module API
           use :filter_query #:pagination
         end
         get '' do
-          @pagy, @scope = pagy(API::V1::Accommodation.all)
+          @api_v1_accommodations = API::V1::Accommodation.all
+          {
+            api_v1_accommodations: @api_v1_accommodations.page(params[:page]).per(18)
+            # meta? or collection
+          }
+          # scope = API::V1::Accommodation.all
           # scope = apply_filters(scope)
           # {
             # **ActiveModelSerializers::SerializableResource.new(scope).as_json

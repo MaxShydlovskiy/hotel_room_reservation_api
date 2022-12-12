@@ -23,7 +23,8 @@ gem 'devise'
 gem 'devise-jwt'
 gem 'dotenv-rails', groups: [:development, :test]
 gem "cancan"
-gem 'pagy'
+# gem 'pagy'
+gem 'kaminari'
 
 
 gem "case_transform", "~> 0.2"
@@ -31,3 +32,4 @@ gem "grape", "~> 1.6"
 gem "grape_on_rails_routes", "~> 0.3.2"
 gem "active_model_serializers", "~> 0.10.13"
 gem "grape-active_model_serializers", "~> 1.5"
+gem 'grape-entity'
