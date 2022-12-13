@@ -18,23 +18,8 @@ module API
           meta, collection = paginate(scope)
           { 
             scope: scope.page(params[:page]).per(18), 
-            meta: meta }
-          # scope = ActiveModelSerializers::SerializableResource.new(collection)
-          # scope.to_json(serialization_context: ActiveModelSerializers::SerializationContext.new(request))
-          # {
-            # **ActiveModelSerializers::SerializableResource.new(collection).as_json, # { data: ... }
-            # **meta
-          # }
-         #  {
-            # api_v1_accommodations: @api_v1_accommodations.page(params[:page]).per(18)
-            # meta? or collection
-          # }
-          # scope = API::V1::Accommodation.all
-          # scope = apply_filters(scope)
-          # {
-            # **ActiveModelSerializers::SerializableResource.new(scope).as_json
-            # **paginate
-          # }
+            meta: meta
+          }
         end
 
         # GET /api/v1/accommodations/1
