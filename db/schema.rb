@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_01_005448) do
+ActiveRecord::Schema[7.0].define(version: 2022_12_13_091046) do
   create_table "api_v1_accommodations", force: :cascade do |t|
     t.integer "type_of_hotel"
     t.string "country"
@@ -29,6 +29,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_01_005448) do
     t.datetime "updated_at", null: false
     t.integer "api_v1_accommodation_id", null: false
     t.integer "user_id", null: false
+    t.decimal "total_price", precision: 8, scale: 2
     t.index ["api_v1_accommodation_id"], name: "index_api_v1_rentals_on_api_v1_accommodation_id"
     t.index ["user_id"], name: "index_api_v1_rentals_on_user_id"
   end
