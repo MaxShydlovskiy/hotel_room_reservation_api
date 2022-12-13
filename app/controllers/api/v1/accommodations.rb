@@ -16,10 +16,15 @@ module API
         get '' do
           scope = API::V1::Accommodation.all
           meta, collection = paginate(scope)
-          {
-            **ActiveModelSerializers::SerializableResource.new(collection).as_json, # { data: ... }
-            **meta
-          }
+          { 
+            scope: scope.page(params[:page]).per(18), 
+            meta: meta }
+          # scope = ActiveModelSerializers::SerializableResource.new(collection)
+          # scope.to_json(serialization_context: ActiveModelSerializers::SerializationContext.new(request))
+          # {
+            # **ActiveModelSerializers::SerializableResource.new(collection).as_json, # { data: ... }
+            # **meta
+          # }
          #  {
             # api_v1_accommodations: @api_v1_accommodations.page(params[:page]).per(18)
             # meta? or collection
