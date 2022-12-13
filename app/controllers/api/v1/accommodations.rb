@@ -17,7 +17,7 @@ module API
           scope = API::V1::Accommodation.all
           meta, collection = paginate(scope)
           { 
-            scope: scope.page(params[:page]).per(18), 
+            scope: scope.page(params[:page]).per(20), 
             meta: meta
           }
         end
