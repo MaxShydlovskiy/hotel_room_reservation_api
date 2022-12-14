@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  total_price: 9.99
+  net_price: 9.99
+  iron: 9.99
+  mini_bar: 9.99
+  air_conditioner: 9.99
+
+two:
+  total_price: 9.99
+  net_price: 9.99
+  iron: 9.99
+  mini_bar: 9.99
+  air_conditioner: 9.99

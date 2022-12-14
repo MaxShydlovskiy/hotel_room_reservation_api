@@ -10,7 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_13_091046) do
+ActiveRecord::Schema[7.0].define(version: 2022_12_14_133107) do
+  create_table "api_v1_accommodation_facilities", force: :cascade do |t|
+    t.decimal "total_price"
+    t.decimal "net_price"
+    t.decimal "iron"
+    t.decimal "mini_bar"
+    t.decimal "air_conditioner"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "api_v1_accommodation_facilities_accommodations", id: false, force: :cascade do |t|
+    t.integer "api_v1_accommodation_id", null: false
+    t.integer "api_v1_accommodation_facility_id", null: false
+  end
+
   create_table "api_v1_accommodations", force: :cascade do |t|
     t.integer "type_of_hotel"
     t.string "country"
